@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="Lucas Javaudin">
+		<title>Metropolis</title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="https://unpkg.com/reveal.js@^4.4//dist/reset.css">
+		<link rel="stylesheet" href="https://unpkg.com/reveal.js@^4.4//dist/reveal.css">
+		<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+		</style>
+		<link rel="stylesheet" href="https://unpkg.com/reveal.js@^4.4//dist/theme/league.css" id="theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section data-background-image="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/cergy-lanes.png">
+					<h1 class="title r-fit-text">Metropolis</h1>
+					<!-- <p class="author">Lucas Javaudin</p> -->
+				</section>
+
+				<!-- SECTION INTRODUCTION -->
+
+				<section>
+					<section class="title-slide slide level1" data-markdown>
+						<textarea data-template>
+							# Introduction
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## What is Metropolis?
+
+							Metropolis is a transport simulator with the following characteristics:
+
+							<ul>
+								<li class="fragment">based on <b>economic theory</b> (utility maximization)</li>
+								<li class="fragment"><b>multi-modal</b> (it includes private and public transports)</li>
+								<li class="fragment"><b>dynamic</b> (congestion is time-dependent and departure times are endogenous)</li>
+								<li class="fragment"><b>mesoscopic</b> (vehicle flow are aggregated at link-level)</li>
+								<li class="fragment"><b>agent-based</b> (each individual is modeled as an autonomous entity)</li>
+								<li class="fragment">adapted to <b>large-scale</b> scenario (up to 1 million roads and 10 millions agents)</li>
+								<li class="fragment"><b>easy to use</b> (there are tools to easily import data and analyze the results)</li>
+							</ul>
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## Team
+
+							Main members:
+
+							<table>
+								<tr>
+									<th>Name</th>
+									<th>Status</th>
+									<th>Affiliation</th>
+									<th>Functions</th>
+								</tr>
+								<tr>
+									<th>de Palma, André</th>
+									<td>Professor</td>
+									<td>THEMA, CY Cergy Paris Université</td>
+									<td>modeling, management</td>
+								</tr>
+								<tr>
+									<th>Javaudin, Lucas</th>
+									<td>PhD Student</td>
+									<td>THEMA, CY Cergy Paris Université</td>
+									<td>modeling, development</td>
+								</tr>
+							</table>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Team
+
+							Other members:
+
+							<table>
+								<tr>
+									<th>Name</th>
+									<th>Status</th>
+									<th>Affiliation</th>
+									<th>Functions</th>
+								</tr>
+								<tr>
+									<th>Ghoslya, Samarth</th>
+									<td>PhD Student</td>
+									<td>Sapienza University of Rome / THEMA, CY Cergy Paris Université</td>
+									<td>ride-sharing extension</td>
+								</tr>
+								<tr>
+									<th>Kuhn, Theotime</th>
+									<td>Intern</td>
+									<td>École Centrale de Pékin / BETA, University of Strasbourg</td>
+									<td>application to Strasbourg</td>
+								</tr>
+								<tr>
+									<th>Le Frioux, Romuald</th>
+									<td>PhD Student</td>
+									<td>THEMA, CY Cergy Paris Université</td>
+									<td>environment extension</td>
+								</tr>
+								<tr>
+									<th>Mohamed El Hacen, Ahmed</th>
+									<td>Intern</td>
+									<td>CY Tech, CY Cergy Paris Université</td>
+									<td>web development</td>
+								</tr>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Team
+
+							Scientific advisers:
+
+							<table>
+								<tr>
+									<th>Name</th>
+									<th>Status</th>
+									<th>Affiliation</th>
+								</tr>
+								<tr>
+									<th>Araldo, Andrea</th>
+									<td>Associate Professor</td>
+									<td>Télécom SudParis, Institut Polytechnique de Paris</td>
+								</tr>
+								<tr>
+									<th>Coulombel, Nicolas</th>
+									<td>Associate Professor</td>
+									<td>LVMT, École des ponts ParisTech</td>
+								</tr>
+								<tr>
+									<th>Geroliminis, Nikolas</th>
+									<td>Professor</td>
+									<td>LUTS, École Polytechnique Fédérale de Lausanne</td>
+								</tr>
+								<tr>
+									<th>Lindsey, Robin</th>
+									<td>Professor</td>
+									<td>Sauder School of Business, University of British Columbia</td>
+								</tr>
+								<tr>
+									<th>Picard, Nathalie</th>
+									<td>Professor</td>
+									<td>BETA, University of Strasbourg</td>
+								</tr>
+								<tr>
+									<th>Seshadri, Ravi</th>
+									<td>Assistant Professor</td>
+									<td>Technical University of Denmark</td>
+								</tr>
+							</table>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Team
+
+							Former members:
+
+							<table>
+								<tr>
+									<th>Name</th>
+									<th>Status</th>
+									<th>Affiliation</th>
+									<th>Functions</th>
+								</tr>
+								<tr>
+									<th>Bouajaja, Ismaïl</th>
+									<td>Intern</td>
+									<td>CY Tech, CY Cergy Paris Université</td>
+									<td>development</td>
+								</tr>
+								<tr>
+									<th>Marchal, Fabrice</th>
+									<td>PhD Student</td>
+									<td>THEMA, Universiy of Cergy-Pontoise</td>
+									<td>modeling, development</td>
+								</tr>
+								<tr>
+									<th>Ndiaye, Abass</th>
+									<td>Research engineer</td>
+									<td>THEMA, CY Cergy Paris Université</td>
+									<td>web development</td>
+								</tr>
+								<tr>
+									<th>Nesterov, Yurii</th>
+									<td>Professor</td>
+									<td>CORE, Université Catholique de Louvain</td>
+									<td>modeling</td>
+								</tr>
+							</table>
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## History of the Project
+
+							<ul>
+								<li class="fragment" data-fragment-index="0"><b>1997-2009:</b> Simulator v1 [C++] (de Palma, Marchal, Nesterov)</li>
+								<li class="fragment" data-fragment-index="1"><b>2001-2009:</b> Interface for the simulator v1 [Java] (Marchal)</li>
+								<li class="fragment" data-fragment-index="2"><b>2018-2021:</b> Web interface for the simulator v1 [Python Django] (Javaudin et al.)</li>
+								<li class="fragment" data-fragment-index="3"><b>2021-????:</b> Simulator v2 [Rust] (de Palma, Javaudin)</li>
+								<li class="fragment" data-fragment-index="4"><b>2021-????:</b> Interface for the simulator v2 [Python + JavaScript] (Javaudin et al.)</li>
+							</ul>
+
+							<div style="display: flex;">
+								<div class="r-stack" style="flex: 50.0%; padding: 5px;">
+									<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/metrosim1.png" class="fragment fade-in-then-out" data-fragment-index="0"/>
+									<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/java_interface2.png" class="fragment fade-in-then-out" data-fragment-index="1"/>
+									<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/web_interface1.png" class="fragment fade-in-then-out" data-fragment-index="2"/>
+									<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/metrolib1.png" class="fragment fade-in-then-out" data-fragment-index="3"/>
+									<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/dashboard1.png" class="fragment fade-in-then-out" data-fragment-index="4"/>
+								</div>
+								<div class="r-stack" style="flex: 50.0%; padding: 5px;">
+									<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/metrosim2.png" class="fragment fade-in-then-out" data-fragment-index="0"/>
+									<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/java_interface1.png" class="fragment fade-in-then-out" data-fragment-index="1"/>
+									<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/web_interface2.png" class="fragment fade-in-then-out" data-fragment-index="2"/>
+									<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/metrolib2.png" class="fragment fade-in-then-out" data-fragment-index="3"/>
+									<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/dashboard2.png" class="fragment fade-in-then-out" data-fragment-index="4"/>
+								</div>
+							</div>
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## Scope of Use
+
+							<ul>
+								<li class="fragment"><b>Road and urban planning</b> by local governments</li>
+								<li class="fragment"><b>Analysis of transport phenomena</b> by economic or engineering researchers</li>
+								<li class="fragment"><b>Teaching</b> of transportation theory to students</li>
+							</ul>
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## Basic principle
+
+							<ul>
+								<li class="fragment">Metropolis is an <b>iterative model</b></li>
+								<li class="fragment">At each iteration, four models are run successively (<b>network skims computation</b>, <b>pre-day model</b>, <b>within-day model</b> and <b>day-to-day model</b>)
+								<li class="fragment">The simulation stops when a <b>convergence criteria</b> is met or when the maximum number of iterations is reached</li>
+							</ul>
+
+							<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/diagrams/simulator.png"/>
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## Input of the Model
+
+							The input of Metropolis can be divided in three main categories:
+							<ul>
+								<li class="fragment" data-fragment-index="0"><b>Road network</b></li>
+								<li class="fragment" data-fragment-index="1"><b>Population</b> (list of agents and their characteristics)</li>
+								<li class="fragment" data-fragment-index="3"><b>Simulation parameters</b></li>
+							</ul>
+
+							TODO: Add images
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Input of the Model
+
+							### Road network
+
+							<ul>
+								<li class="fragment"><b>Edges</b> and their characteristics:
+									<ul>
+										<li>Speed</li>
+										<li>Length</li>
+										<li>Number of lanes</li>
+										<li>Speed-density function</li>
+										<li>Bottleneck capacity</li>
+									</ul>
+								</li>
+								<li class="fragment"><b>Vehicle types</b> and their characteristics:
+									<ul>
+										<li>Headway between two vehicles</li>
+										<li>Passenger car equivalent</li>
+										<li>Speed function (representing speed limits)</li>
+									</ul>
+								</li>
+							</ul>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Input of the Model
+
+							### Population
+
+							<ul>
+								<li class="fragment"><b>Mode choice model</b> (e.g., Logit, deterministic)</li>
+								<li class="fragment"><b>Schedule-utility model</b> (a function of the departure and arrival time; e.g., alpha-beta-gamma model)</li>
+								<li class="fragment">Description of the <b>modes</b> available to the agent</li>
+							</ul>
+
+							<div class="fragment">
+								<hr>
+								Currently, two different mode types are supported:
+								<ul>
+									<li>Mode with <b>time-independent utility</b> (e.g., walking, cycling): only the utility level needs to be known</li>
+									<li><b>Road modes</b> (e.g., car, motorcycle, truck) with:
+										<ul>
+											<li>Origin and destination node</li>
+											<li>Vehicle type</li>
+											<li>Departure-time model (either fixed or a continuous Logit model)</li>
+											<li>Travel-utility function (a function of the travel time)</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Input of the Model
+
+							### Simulation Parameters
+
+							<ul>
+								<li class="fragment"><b>Simulated period</b></li>
+								<li class="fragment"><b>Learning model</b> (Markov process describing how agent learns from one iteration to another)</li>
+								<li class="fragment"><b>Approximation errors</b> (how to simplify the travel-time functions to speed-up computation)</li>
+								<li class="fragment"><b>Stopping criteria</b> (e.g., maximum number of iteration, minimum value for EXPECT)</li>
+							</ul>
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## Output of the Model
+
+							The output of Metropolis can be divided in three main categories:
+							<ul>
+								<li class="fragment" data-fragment-index="0"><b>Aggregated results</b></li>
+								<li class="fragment" data-fragment-index="1"><b>Agent-specific results</b></li>
+								<li class="fragment" data-fragment-index="3"><b>Edge-specific results</b></li>
+							</ul>
+
+							TODO: Add images
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Output of the Model
+
+							### Aggregate results
+
+							The aggregate results of Metropolis include:
+							<ul>
+								<li class="fragment"><b>Mode shares</b></li>
+								<li class="fragment"><b>Congestion level</b> (relative difference between actual and free-flow travel time) [mean, std., min. and max.]</li>
+								<li class="fragment"><b>Travel time</b> for each mode [mean, std., min. and max.]</li>
+								<li class="fragment"><b>Distance traveled</b> for each mode [mean, std., min. and max.]</li>
+								<li class="fragment"><b>Utility</b> (or <b>generalized cost</b>) [mean, std., min. and max.]</li>
+								<li class="fragment"><b>Welfare</b> (expected utility from the choices made) [mean, std., min. and max.]</li>
+							</ul>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Output of the Model
+
+							### Agent-specific results
+
+							The agent-specific results of Metropolis include:
+							<ul>
+								<li class="fragment"><b>Utility</b> (or <b>generalized cost</b>)</li>
+								<li class="fragment"><b>Departure time</b>, <b>arrival time</b> and <b>travel time</b></li>
+								<li class="fragment"><b>Chosen mode</b></li>
+								<li class="fragment"><b>Route</b> taken (for road modes), with the entry and exit time of each edge</li>
+							</ul>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Output of the Model
+
+							### Edge-specific results
+
+							The edge-specific results of Metropolis include:
+							<ul>
+								<li class="fragment">Expected and simulated <b>time-dependent travel times</b></li>
+								<li class="fragment">Simulated <b>time-dependent flows</b>, by vehicle type</li>
+							</ul>
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# Transport Simulators
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							TODO literature review on transportation models with categories and summary tables / including a reminder on Metropolis 1
+
+							<ul>
+								<li>TransCAD (Caliper)</li>
+								<li>Emme-3 (INRO)</li>
+								<li>Visum / Vissim (PTV)</li>
+								<li>DYNASMART-P (McTrans)</li>
+								<li>Mezzo (KTH Royal Institute of Technology)</li>
+								<li>SimMobility (MIT)</li>
+								<li>MATSim (VSP TU-Berlin / IVT ETH Zurich)</li>
+							</ul>
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# Theoretical Modeling
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section>
+							<h2>Network skims computation</h2>
+
+							<ul>
+								<li class="fragment" data-fragment-index="0"><b>Input:</b> time-dependent travel-time function for each edge of the road-network graph</li>
+								<li class="fragment" data-fragment-index="1"><b>Step 1:</b> compute a time-dependent Hierarchy Overlay of the graph</li>
+								<li class="fragment" data-fragment-index="2"><b>Step 2:</b> compute search spaces for each origin and destination node</li>
+								<li class="fragment" data-fragment-index="3"><b>Step 3:</b> compute profile queries for each origin-destination pair</li>
+								<li class="fragment" data-fragment-index="4"><b>Output:</b> time-dependent travel-time function for each origin-destination pair (with at least one trip)</li>
+							</ul>
+
+							<div style="display: flex; align-items: center; justify-content: center;">
+								<div class="r-stack" style="flex: 60.0%; padding: 5px;">
+									<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/edge_ttf.png" class="fragment fade-in-then-out" data-fragment-index="0"/>
+									<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/sioux_falls_overlay.png" class="fragment fade-in-then-out" data-fragment-index="1" style="transform: rotate(90deg);"/>
+									<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/search_upward.png" class="fragment fade-in-then-out" data-fragment-index="2" style="transform: rotate(90deg);"/>
+									<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/intersection_algorithm.png" class="fragment fade-in-then-out" data-fragment-index="3" style="transform: rotate(90deg);"/>
+									<img src="https://raw.githubusercontent.com/MetropolisTHEMA/MetropolisPresentation/main/pictures/od_pair_ttf.png" class="fragment fade-in-then-out" data-fragment-index="4"/>
+								</div>
+								<div class="fragment" data-fragment-index="0" style="flex: 30.0%; padding: 5px;">
+									Geisberger, R. and Sanders, P., 2010. Engineering time-dependent many-to-many shortest paths computation. In <em>10th Workshop on Algorithmic Approaches for Transportation Modelling, Optimization, and Systems (ATMOS'10)</em>. Schloss Dagstuhl-Leibniz-Zentrum fuer Informatik.
+								</div>
+							</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+							<h2>Pre-Day Model</h2>
+
+							<ul>
+								<li class="fragment"><b>Input:</b> time-dependent travel-time function for each origin-destination pair</li>
+								<li class="fragment"><b>Departure-time choice:</b> choose the departure time of the agent, given the travel-time function, the schedule-utility and travel-utility functions and the mode <b>(continuous Logit model)</b></li>
+								<li class="fragment"><b>Route choice:</b> choose the route that minimizes the travel time of the agent for the departure time chosen</li>
+								<li class="fragment"><b>Mode choice:</b> choose the mode of the agent, given the expected utility for each mode available (<b>Logit model</b>, deterministic model or any other choice model)</li>
+								<li class="fragment"><b>Output:</b> mode, departure-time and route chosen by each agent</li>
+							</ul>
+
+							<div class="fragment">
+								<hr>
+
+								Note. For some modes, there is no departure-time and route choice.
+							</div>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Departure-Time Choice Model
+
+							TODO
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## Within-Day Model
+
+							<ul>
+								<li class="fragment"><b>Input:</b> mode, departure-time and route chosen by each agent</li>
+								<li class="fragment"><b>Event-based model:</b> all events that occur in the network are simulated successively, in chronological order</li>
+								<li class="fragment"><b>Examples of events:</b> vehicle enters road, vehicle exits road bottleneck, road bottleneck opens</li>
+								<li class="fragment">Record the <b>simulated travel times</b> of each road, at given time intervals</li>
+								<li class="fragment"><b>Output:</b> time-dependent travel-time function for each road</li>
+							</ul>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Bottleneck
+
+							TODO
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## Day-to-Day Model
+
+							<ul>
+								<li class="fragment"><b>Input:</b> expected and simulated time-dependent travel-time function for each road</li>
+								<li class="fragment">Compute the expected travel-time functions for next iteration given the expected and simulated travel-time functions of current iteration, using a <b>Markov process</b> (e.g., exponential process with weight $\lambda$ for simulated values)</li>
+								<li class="fragment">Stop the simulation if a <b>stopping criteria</b> is reached (e.g., maximum number of iterations, EXPECT threshold, departure-time shift threshold)</li>
+								<li class="fragment"><b>Output:</b> expected time-dependent travel-time function for each road</li>
+							</ul>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Stopping Criteria
+
+							TODO: define EXPECT and dep-time shift
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# Interface and Visualization
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# Applications
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# Extensions
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## Air Pollution (de Palma, Blond and Le Frioux)
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# Conclusion
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## Future improvements
+
+							- Intermediary stops
+							- Public-transit
+							- Automatic computation of air pollution
+							- Road maintenance
+							- Ride-sharing
+						</textarea>
+					</section>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="https://unpkg.com/reveal.js@^4.4//dist/reveal.js"></script>
+
+		<!-- reveal.js plugins -->
+		<script src="https://unpkg.com/reveal.js@^4.4//plugin/markdown/markdown.js"></script>
+		<script src="https://unpkg.com/reveal.js@^4.4//plugin/math/math.js"></script>
+		<script src="https://unpkg.com/reveal.js@^4.4//plugin/notes/notes.js"></script>
+		<script src="https://unpkg.com/reveal.js@^4.4//plugin/search/search.js"></script>
+		<script src="https://unpkg.com/reveal.js@^4.4//plugin/zoom/zoom.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://revealjs.com/config/
+			Reveal.initialize({
+				width: 1920,
+				height: 1080,
+				margin: 0.04,
+
+				// Display controls in the bottom right corner
+				controls: true,
+
+				// Help the user learn the controls by providing hints, for example by
+				// bouncing the down arrow when they first encounter a vertical slide
+				controlsTutorial: false,
+
+				// Determines where controls appear, "edges" or "bottom-right"
+				controlsLayout: 'edges',
+
+				// Visibility rule for backwards navigation arrows; "faded", "hidden"
+				// or "visible"
+				controlsBackArrows: 'faded',
+
+				// Display a presentation progress bar
+				progress: true,
+
+				// Display the page number of the current slide
+				slideNumber: false,
+
+				// 'all', 'print', or 'speaker'
+				showSlideNumber: 'all',
+
+				// Add the current slide number to the URL hash so that reloading the
+				// page/copying the URL will return you to the same slide
+				hash: true,
+
+				// Start with 1 for the hash rather than 0
+				hashOneBasedIndex: false,
+
+				// Flags if we should monitor the hash and change slides accordingly
+				respondToHashChanges: true,
+
+				// Push each slide change to the browser history
+				history: false,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enable the slide overview mode
+				overview: true,
+
+				// Disables the default reveal.js slide layout (scaling and centering)
+				// so that you can use custom CSS layout
+				disableLayout: false,
+
+				// Vertical centering of slides
+				center: true,
+
+				// Enables touch navigation on devices with touch input
+				touch: true,
+
+				// Loop the presentation
+				loop: false,
+
+				// Change the presentation direction to be RTL
+				rtl: false,
+
+				// see https://revealjs.com/vertical-slides/#navigation-mode
+				navigationMode: 'default',
+
+				// Randomizes the order of slides each time the presentation loads
+				shuffle: false,
+
+				// Turns fragments on and off globally
+				fragments: true,
+
+				// Flags whether to include the current fragment in the URL,
+				// so that reloading brings you to the same fragment position
+				fragmentInURL: true,
+
+				// Flags if the presentation is running in an embedded mode,
+				// i.e. contained within a limited portion of the screen
+				embedded: false,
+
+				// Flags if we should show a help overlay when the questionmark
+				// key is pressed
+				help: true,
+
+				// Flags if it should be possible to pause the presentation (blackout)
+				pause: true,
+
+				// Flags if speaker notes should be visible to all viewers
+				showNotes: false,
+
+				// Global override for autoplaying embedded media (null/true/false)
+				autoPlayMedia: null,
+
+				// Global override for preloading lazy-loaded iframes (null/true/false)
+				preloadIframes: null,
+
+				// Number of milliseconds between automatically proceeding to the
+				// next slide, disabled when set to 0, this value can be overwritten
+				// by using a data-autoslide attribute on your slides
+				autoSlide: 0,
+
+				// Stop auto-sliding after user input
+				autoSlideStoppable: true,
+
+				// Use this method for navigation when auto-sliding
+				autoSlideMethod: null,
+
+				// Specify the average time in seconds that you think you will spend
+				// presenting each slide. This is used to show a pacing timer in the
+				// speaker view
+				defaultTiming: null,
+
+				// Enable slide navigation via mouse wheel
+				mouseWheel: false,
+
+				// The display mode that will be used to show slides
+				display: 'block',
+
+				// Hide cursor if inactive
+				hideInactiveCursor: true,
+
+				// Time before the cursor is hidden (in ms)
+				hideCursorTime: 2000,
+
+				// Opens links in an iframe preview overlay
+				previewLinks: false,
+
+				// Transition style (none/fade/slide/convex/concave/zoom)
+				transition: 'slide',
+
+				// Transition speed (default/fast/slow)
+				transitionSpeed: 'default',
+
+				// Transition style for full page slide backgrounds
+				// (none/fade/slide/convex/concave/zoom)
+				backgroundTransition: 'convex',
+
+				// The maximum number of pages a single slide can expand onto when printing
+				// to PDF, unlimited by default
+				pdfMaxPagesPerSlide: Number.POSITIVE_INFINITY,
+
+				// Prints each fragment on a separate slide
+				pdfSeparateFragments: false,
+
+				// Offset used to reduce the height of content within exported PDF pages.
+				// This exists to account for environment differences based on how you
+				// print to PDF. CLI printing options, like phantomjs and wkpdf, can end
+				// on precisely the total height of the document whereas in-browser
+				// printing has to end one pixel before.
+				pdfPageHeightOffset: -1,
+
+				// Number of slides away from the current that are visible
+				viewDistance: 3,
+
+				// Number of slides away from the current that are visible on mobile
+				// devices. It is advisable to set this to a lower number than
+				// viewDistance in order to save resources.
+				mobileViewDistance: 2,
+
+				// reveal.js plugins
+				plugins: [
+					RevealMarkdown,
+					RevealMath.KaTeX,
+					RevealNotes,
+					RevealSearch,
+					RevealZoom
+				],
+
+				// Options which are passed into marked.
+				markdown: {
+					smartypants: true
+				}
+			});
+		</script>
+	</body>
+</html>

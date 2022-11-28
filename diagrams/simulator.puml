@@ -1,0 +1,25 @@
+@startuml
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+skinparam containerFontSize 18
+HIDE_STEREOTYPE()
+
+ContainerDb(input_files, "Input", "", "Agents characteristics, network description, technical parameters")
+ContainerDb(output_files, "Output", "", "Aggregate, network-specific and agent-specific results")
+
+Container_Boundary(simulator, "METROPOLIS") {
+    Container(skims_computation, "Network Skims Computation", "", "Compute the OD-level travel-time functions")
+    Container(preday_model, "Pre-Day Model", "", "Compute the mode, departure time and route chosen by each agent")
+    Container(withinday_model, "Within-Day Model", "", "Simulate the movements of the agents on the network and compute the resulting network weights")
+    Container(daytoday_model, "Day-to-Day Model", "", "Update the expected network weights given the simulated network weights; Stop if convergence is reached")
+}
+
+Rel_Down(input_files, skims_computation, "Initial network weights")
+Rel_Right(skims_computation, preday_model, "OD-level travel times")
+Rel_Down(preday_model, withinday_model, "Agents' choices")
+Rel_Left(withinday_model, daytoday_model, "Simulated network weights")
+Rel_Up(daytoday_model, skims_computation, "Expected network weights")
+Rel_Down(daytoday_model, output_files, "Results")
+
+@enduml

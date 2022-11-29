@@ -1,0 +1,36 @@
+@startuml
+
+start
+
+repeat
+
+repeat while (Another agent?) is (yes)
+
+->no;
+
+stop
+
+:Vehicle enter link;
+
+:Compute travel time to the end of the link;
+
+if (Overtaking is allowed) then (yes)
+else (no)
+    :Travel time is capped according to the arrival time of previous vehicle;
+endif
+
+:Wait until the end of the link is reached;
+
+if (Bottleneck is open) then (yes)
+else (no)
+    :Push vehicle to bottleneck queue;
+    :Wait until vehicle is first in the queue and bottleneck opens;
+endif
+
+:Vehicle exits the link;
+
+:Close the bottleneck for a period δ;
+
+stop
+
+@enduml
